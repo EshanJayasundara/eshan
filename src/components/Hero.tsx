@@ -14,7 +14,7 @@ export default function Hero() {
         className="w-48 h-48 md:w-96 md:h-96 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] mt-0"
       >
         <Image 
-          src="/eshangj_hero.png" 
+          src="/eshan/eshangj_hero.png" 
           alt="Eshan Jayasundara" 
           fill 
           className="object-cover"

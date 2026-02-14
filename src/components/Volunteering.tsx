@@ -67,36 +67,36 @@ export default function Volunteering() {
         <VolunteerCard 
           role="Casual Instructor (Undergraduate Teaching Assistant)"
           organization="University of Peradeniya"
-          logo="/volunteering/uop.jpg"
+          logo="/eshan/volunteering/uop.jpg"
           description="Lab instructor for Computing (Python), Digital Design, Data Structures & Algorithms, and Machine Learning courses."
         />
         <VolunteerCard 
           role="Secretary"
           organization="IEEE Computer Society"
-          logo="/volunteering/ieeecs.png"
+          logo="/eshan/volunteering/ieeecs.png"
           period="Term 24/25"
         />
         <VolunteerCard 
           role="Web Master"
           organization="IEEE Robotics and Automation Society"
-          logo="/volunteering/ieeeras.jpg"
+          logo="/eshan/volunteering/ieeeras.jpg"
           period="Term 23/24"
         />
         <VolunteerCard 
           role="Committee Member"
           organization="Association of Computer Engineering Students (ACES)"
-          logo="/volunteering/aces.jpg"
+          logo="/eshan/volunteering/aces.jpg"
           period="Term 23/24"
         />
         <VolunteerCard 
           role="Organizing Committee Member"
           organization="IEEEXtreme 17.0"
-          logo="/volunteering/ieeexterme.png"
+          logo="/eshan/volunteering/ieeexterme.png"
         />
         <VolunteerCard 
           role="Contributor"
           organization="Department Project ESCAL Website Development"
-          logo="/volunteering/escal.png"
+          logo="/eshan/volunteering/escal.png"
           description="Contributed to continuous development of the Embedded Systems and Computer Architecture Laboratory website."
         />
       </div>

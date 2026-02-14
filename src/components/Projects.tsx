@@ -82,7 +82,7 @@ function ProjectCard({ title, description, tags, github, demo, paper, thumbnail 
 }
 
 export default function Projects() {
-  const placeholderThumbnail = "/projects/nn.png";
+  const placeholderThumbnail = "/eshan/projects/nn.png";
 
   return (
     <section id="projects" className="mb-24">

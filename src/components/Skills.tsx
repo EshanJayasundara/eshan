@@ -66,52 +66,52 @@ export default function Skills() {
     {
       title: "ML/DL",
       items: [
-        { name: "PyTorch", logo: "/techstack/pytorch.png" },
-        { name: "TensorFlow", logo: "/techstack/tensorflow.jpg" },
-        { name: "scikit-learn", logo: "/techstack/sklearn.png" },
-        { name: "SHAP", logo: "/techstack/shap.png" },
-        { name: "imbalanced-learn", logo: "/techstack/imblearn.jpg" },
-        { name: "MLflow", logo: "/techstack/mlflow.png" },
+        { name: "PyTorch", logo: "/eshan/techstack/pytorch.png" },
+        { name: "TensorFlow", logo: "/eshan/techstack/tensorflow.jpg" },
+        { name: "scikit-learn", logo: "/eshan/techstack/sklearn.png" },
+        { name: "SHAP", logo: "/eshan/techstack/shap.png" },
+        { name: "imbalanced-learn", logo: "/eshan/techstack/imblearn.jpg" },
+        { name: "MLflow", logo: "/eshan/techstack/mlflow.png" },
       ]
     },
     {
       title: "LLM/NLP",
       items: [
-        { name: "Google Gemini", logo: "/techstack/gemini.png" },
-        { name: "Anthropic", logo: "/techstack/anthropic.png" },
-        { name: "OpenAI", logo: "/techstack/openai.png" },
-        { name: "LangGraph", logo: "/techstack/langgraph.png" },
-        { name: "Hugging Face", logo: "/techstack/huggingface.png" },
-        { name: "ChromaDB", logo: "/techstack/chroma.png" },
-        { name: "Qdrant", logo: "/techstack/qdrant.png" },
+        { name: "Google Gemini", logo: "/eshan/techstack/gemini.png" },
+        { name: "Anthropic", logo: "/eshan/techstack/anthropic.png" },
+        { name: "OpenAI", logo: "/eshan/techstack/openai.png" },
+        { name: "LangGraph", logo: "/eshan/techstack/langgraph.png" },
+        { name: "Hugging Face", logo: "/eshan/techstack/huggingface.png" },
+        { name: "ChromaDB", logo: "/eshan/techstack/chroma.png" },
+        { name: "Qdrant", logo: "/eshan/techstack/qdrant.png" },
       ]
     },
     {
       title: "Data Science",
       items: [
-        { name: "NumPy", logo: "/techstack/numpy.jpg" },
-        { name: "Pandas", logo: "/techstack/pandas.png" },
-        { name: "Matplotlib", logo: "/techstack/matplotlib.png" },
-        { name: "Seaborn", logo: "/techstack/seaborn.png" },
-        { name: "Jupyter", logo: "/techstack/Jupyter_logo.png" },
+        { name: "NumPy", logo: "/eshan/techstack/numpy.jpg" },
+        { name: "Pandas", logo: "/eshan/techstack/pandas.png" },
+        { name: "Matplotlib", logo: "/eshan/techstack/matplotlib.png" },
+        { name: "Seaborn", logo: "/eshan/techstack/seaborn.png" },
+        { name: "Jupyter", logo: "/eshan/techstack/Jupyter_logo.png" },
       ]
     },
     {
       title: "Languages & Tools",
       items: [
-        { name: "Python", logo: "/techstack/python.png" },
-        { name: "TypeScript", logo: "/techstack/Typescript.png" }, // Fallback to github or fix based on available
-        { name: "Docker", logo: "/techstack/docker.png" },
-        { name: "GCP", logo: "/techstack/google-cloud.jpg" },
-        { name: "Git/GitHub", logo: "/techstack/github.png" },
+        { name: "Python", logo: "/eshan/techstack/python.png" },
+        { name: "TypeScript", logo: "/eshan/techstack/Typescript.png" }, // Fallback to github or fix based on available
+        { name: "Docker", logo: "/eshan/techstack/docker.png" },
+        { name: "GCP", logo: "/eshan/techstack/google-cloud.jpg" },
+        { name: "Git/GitHub", logo: "/eshan/techstack/github.png" },
       ]
     },
     {
       title: "Backend & DB",
       items: [
-        { name: "Nest.js", logo: "/techstack/nest.png" },
-        { name: "MySQL", logo: "/techstack/mysql.png" },
-        { name: "PostgreSQL", logo: "/techstack/postgress.png" },
+        { name: "Nest.js", logo: "/eshan/techstack/nest.png" },
+        { name: "MySQL", logo: "/eshan/techstack/mysql.png" },
+        { name: "PostgreSQL", logo: "/eshan/techstack/postgress.png" },
       ]
     }
   ];

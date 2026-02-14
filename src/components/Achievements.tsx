@@ -77,20 +77,20 @@ export default function Achievements() {
           title="IEEEXtreme 18.0 - Island Rank 77"
           year="2024"
           team="Team BitBoss"
-          logo="/achievements/ieeexterme.png"
+          logo="/eshan/achievements/ieeexterme.png"
           certificate="https://certificate.ieeextreme.org/generate-email-certificate/X9BeZKjt2lwNFjP"
         />
         <AchievementCard 
           title="ACES Coders v11.0 - Top 30"
           year="2024"
           team="Team Whitehats"
-          logo="/achievements/coders.png"
+          logo="/eshan/achievements/coders.png"
         />
         <AchievementCard 
           title="IEEE Innovation Nation Sri Lanka - 3rd Place"
           year="2023"
           team="Central Province"
-          logo="/achievements/ieeeinsl.png"
+          logo="/eshan/achievements/ieeeinsl.png"
         />
       </div>
     </section>

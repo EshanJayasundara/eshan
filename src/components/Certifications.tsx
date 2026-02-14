@@ -88,32 +88,32 @@ export default function Certifications() {
         <CertificationCard 
           platform="Coursera"
           link="https://www.coursera.org/user/364b57802f7fc0404f320dc78ed7b3df"
-          logo="/certificates/coursera.png"
+          logo="/eshan/certificates/coursera.png"
           courses={[
             { 
               title: "Deep Learning Specialization", 
               issuer: "DeepLearning.AI", 
-              issuerLogo: "/certificates/deeplearningai.jpg" 
+              issuerLogo: "/eshan/certificates/deeplearningai.jpg" 
             },
             { 
               title: "Google AI Essentials", 
               issuer: "Google", 
-              issuerLogo: "/certificates/google-removebg-preview.png" 
+              issuerLogo: "/eshan/certificates/google-removebg-preview.png" 
             }
           ]}
         />
         <CertificationCard 
           platform="DataCamp"
           link="https://www.datacamp.com/portfolio/e19163"
-          logo="/certificates/datacamp.jpg"
+          logo="/eshan/certificates/datacamp.jpg"
           courses={[
             { 
               title: "Supervised Learning with scikit-learn",
-              issuerLogo: "/techstack/sklearn.png"
+              issuerLogo: "/eshan/techstack/sklearn.png"
             },
             { 
               title: "Object-Oriented Programming in Python",
-              issuerLogo: "/techstack/python.png"
+              issuerLogo: "/eshan/techstack/python.png"
             }
           ]}
         />
