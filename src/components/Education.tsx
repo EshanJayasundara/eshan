@@ -72,14 +72,14 @@ export default function Education() {
           institution="University of Peradeniya"
           period="2021 - 2025"
           gpa="GPA: 3.65 / 4.00"
-          logo="/uop.jpg"
+          logo="eshan/uop.jpg"
         />
         <EducationCard 
           degree="GCE Advanced Level - Physical Science"
           institution="Central College Kuliyapitiya"
           period="2019"
           gpa="Z Score: 2.1645 | District Rank: 40"
-          logo="/cck.jpg"
+          logo="eshan/cck.jpg"
         />
       </div>
     </section>
