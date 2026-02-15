@@ -6,6 +6,8 @@ import Image from "next/image";
 
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
+
 export default function Hero() {
   return (
     <section className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 mb-24 text-center md:text-left">
@@ -17,7 +19,7 @@ export default function Hero() {
         className="w-48 h-48 md:w-96 md:h-96 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] mt-0"
       >
         <Image 
-          src="/eshan/eshangj_hero.png" 
+          src={`${BASE_PATH}/eshangj_hero.png`} 
           alt="Eshan Jayasundara" 
           fill 
           className="object-cover"

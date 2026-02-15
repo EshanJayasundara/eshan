@@ -24,6 +24,8 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
   );
 };
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
+
 function CertificationCard({ platform, link, courses, logo }: any) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -88,32 +90,32 @@ export default function Certifications() {
         <CertificationCard 
           platform="Coursera"
           link="https://www.coursera.org/user/364b57802f7fc0404f320dc78ed7b3df"
-          logo="/eshan/certificates/coursera.png"
+          logo={`${BASE_PATH}/certificates/coursera.png`}
           courses={[
             { 
               title: "Deep Learning Specialization", 
               issuer: "DeepLearning.AI", 
-              issuerLogo: "/eshan/certificates/deeplearningai.jpg" 
+              issuerLogo: `${BASE_PATH}/certificates/deeplearningai.jpg` 
             },
             { 
               title: "Google AI Essentials", 
               issuer: "Google", 
-              issuerLogo: "/eshan/certificates/google-removebg-preview.png" 
+              issuerLogo: `${BASE_PATH}/certificates/google-removebg-preview.png` 
             }
           ]}
         />
         <CertificationCard 
           platform="DataCamp"
           link="https://www.datacamp.com/portfolio/e19163"
-          logo="/eshan/certificates/datacamp.jpg"
+          logo={`${BASE_PATH}/certificates/datacamp.jpg`}
           courses={[
             { 
               title: "Supervised Learning with scikit-learn",
-              issuerLogo: "/eshan/techstack/sklearn.png"
+              issuerLogo: `${BASE_PATH}/techstack/sklearn.png`
             },
             { 
               title: "Object-Oriented Programming in Python",
-              issuerLogo: "/eshan/techstack/python.png"
+              issuerLogo: `${BASE_PATH}/techstack/python.png`
             }
           ]}
         />

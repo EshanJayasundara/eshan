@@ -81,8 +81,10 @@ function ProjectCard({ title, description, tags, github, demo, paper, thumbnail 
   );
 }
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
+
 export default function Projects() {
-  const placeholderThumbnail = "/eshan/projects/nn.png";
+  const placeholderThumbnail = `${BASE_PATH}/projects/nn.png`;
 
   return (
     <section id="projects" className="mb-24">

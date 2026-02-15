@@ -24,6 +24,8 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
   );
 };
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
+
 function VolunteerCard({ role, organization, period, description, logo }: any) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -67,36 +69,36 @@ export default function Volunteering() {
         <VolunteerCard 
           role="Casual Instructor (Undergraduate Teaching Assistant)"
           organization="University of Peradeniya"
-          logo="/eshan/volunteering/uop.jpg"
+          logo={`${BASE_PATH}/volunteering/uop.jpg`}
           description="Lab instructor for Computing (Python), Digital Design, Data Structures & Algorithms, and Machine Learning courses."
         />
         <VolunteerCard 
           role="Secretary"
           organization="IEEE Computer Society"
-          logo="/eshan/volunteering/ieeecs.png"
+          logo={`${BASE_PATH}/volunteering/ieeecs.png`}
           period="Term 24/25"
         />
         <VolunteerCard 
           role="Web Master"
           organization="IEEE Robotics and Automation Society"
-          logo="/eshan/volunteering/ieeeras.jpg"
+          logo={`${BASE_PATH}/volunteering/ieeeras.jpg`}
           period="Term 23/24"
         />
         <VolunteerCard 
           role="Committee Member"
           organization="Association of Computer Engineering Students (ACES)"
-          logo="/eshan/volunteering/aces.jpg"
+          logo={`${BASE_PATH}/volunteering/aces.jpg`}
           period="Term 23/24"
         />
         <VolunteerCard 
           role="Organizing Committee Member"
           organization="IEEEXtreme 17.0"
-          logo="/eshan/volunteering/ieeexterme.png"
+          logo={`${BASE_PATH}/volunteering/ieeexterme.png`}
         />
         <VolunteerCard 
           role="Contributor"
           organization="Department Project ESCAL Website Development"
-          logo="/eshan/volunteering/escal.png"
+          logo={`${BASE_PATH}/volunteering/escal.png`}
           description="Contributed to continuous development of the Embedded Systems and Computer Architecture Laboratory website."
         />
       </div>

@@ -61,57 +61,59 @@ function SkillCard({ title, items }: { title: string; items: { name: string; log
   );
 }
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
+
 export default function Skills() {
   const skills = [
     {
       title: "ML/DL",
       items: [
-        { name: "PyTorch", logo: "/eshan/techstack/pytorch.png" },
-        { name: "TensorFlow", logo: "/eshan/techstack/tensorflow.jpg" },
-        { name: "scikit-learn", logo: "/eshan/techstack/sklearn.png" },
-        { name: "SHAP", logo: "/eshan/techstack/shap.png" },
-        { name: "imbalanced-learn", logo: "/eshan/techstack/imblearn.jpg" },
-        { name: "MLflow", logo: "/eshan/techstack/mlflow.png" },
+        { name: "PyTorch", logo: `${BASE_PATH}/techstack/pytorch.png` },
+        { name: "TensorFlow", logo: `${BASE_PATH}/techstack/tensorflow.jpg` },
+        { name: "scikit-learn", logo: `${BASE_PATH}/techstack/sklearn.png` },
+        { name: "SHAP", logo: `${BASE_PATH}/techstack/shap.png` },
+        { name: "imbalanced-learn", logo: `${BASE_PATH}/techstack/imblearn.jpg` },
+        { name: "MLflow", logo: `${BASE_PATH}/techstack/mlflow.png` },
       ]
     },
     {
       title: "LLM/NLP",
       items: [
-        { name: "Google Gemini", logo: "/eshan/techstack/gemini.png" },
-        { name: "Anthropic", logo: "/eshan/techstack/anthropic.png" },
-        { name: "OpenAI", logo: "/eshan/techstack/openai.png" },
-        { name: "LangGraph", logo: "/eshan/techstack/langgraph.png" },
-        { name: "Hugging Face", logo: "/eshan/techstack/huggingface.png" },
-        { name: "ChromaDB", logo: "/eshan/techstack/chroma.png" },
-        { name: "Qdrant", logo: "/eshan/techstack/qdrant.png" },
+        { name: "Google Gemini", logo: `${BASE_PATH}/techstack/gemini.png` },
+        { name: "Anthropic", logo: `${BASE_PATH}/techstack/anthropic.png` },
+        { name: "OpenAI", logo: `${BASE_PATH}/techstack/openai.png` },
+        { name: "LangGraph", logo: `${BASE_PATH}/techstack/langgraph.png` },
+        { name: "Hugging Face", logo: `${BASE_PATH}/techstack/huggingface.png` },
+        { name: "ChromaDB", logo: `${BASE_PATH}/techstack/chroma.png` },
+        { name: "Qdrant", logo: `${BASE_PATH}/techstack/qdrant.png` },
       ]
     },
     {
       title: "Data Science",
       items: [
-        { name: "NumPy", logo: "/eshan/techstack/numpy.jpg" },
-        { name: "Pandas", logo: "/eshan/techstack/pandas.png" },
-        { name: "Matplotlib", logo: "/eshan/techstack/matplotlib.png" },
-        { name: "Seaborn", logo: "/eshan/techstack/seaborn.png" },
-        { name: "Jupyter", logo: "/eshan/techstack/Jupyter_logo.png" },
+        { name: "NumPy", logo: `${BASE_PATH}/techstack/numpy.jpg` },
+        { name: "Pandas", logo: `${BASE_PATH}/techstack/pandas.png` },
+        { name: "Matplotlib", logo: `${BASE_PATH}/techstack/matplotlib.png` },
+        { name: "Seaborn", logo: `${BASE_PATH}/techstack/seaborn.png` },
+        { name: "Jupyter", logo: `${BASE_PATH}/techstack/Jupyter_logo.png` },
       ]
     },
     {
       title: "Languages & Tools",
       items: [
-        { name: "Python", logo: "/eshan/techstack/python.png" },
-        { name: "TypeScript", logo: "/eshan/techstack/Typescript.png" }, // Fallback to github or fix based on available
-        { name: "Docker", logo: "/eshan/techstack/docker.png" },
-        { name: "GCP", logo: "/eshan/techstack/google-cloud.jpg" },
-        { name: "Git/GitHub", logo: "/eshan/techstack/github.png" },
+        { name: "Python", logo: `${BASE_PATH}/techstack/python.png` },
+        { name: "TypeScript", logo: `${BASE_PATH}/techstack/Typescript.png` }, // Fallback to github or fix based on available
+        { name: "Docker", logo: `${BASE_PATH}/techstack/docker.png` },
+        { name: "GCP", logo: `${BASE_PATH}/techstack/google-cloud.jpg` },
+        { name: "Git/GitHub", logo: `${BASE_PATH}/techstack/github.png` },
       ]
     },
     {
       title: "Backend & DB",
       items: [
-        { name: "Nest.js", logo: "/eshan/techstack/nest.png" },
-        { name: "MySQL", logo: "/eshan/techstack/mysql.png" },
-        { name: "PostgreSQL", logo: "/eshan/techstack/postgress.png" },
+        { name: "Nest.js", logo: `${BASE_PATH}/techstack/nest.png` },
+        { name: "MySQL", logo: `${BASE_PATH}/techstack/mysql.png` },
+        { name: "PostgreSQL", logo: `${BASE_PATH}/techstack/postgress.png` },
       ]
     }
   ];

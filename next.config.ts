@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
-  basePath: "/eshan",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan",
   images: {
     unoptimized: true,
     remotePatterns: [],

@@ -6,6 +6,7 @@ import { Trophy, Award, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
@@ -23,6 +24,8 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
     </motion.div>
   );
 };
+
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
 
 function AchievementCard({ title, year, team, certificate, logo }: any) {
   const ref = useRef(null);
@@ -77,20 +80,20 @@ export default function Achievements() {
           title="IEEEXtreme 18.0 - Island Rank 77"
           year="2024"
           team="Team BitBoss"
-          logo="/eshan/achievements/ieeexterme.png"
+          logo={`${BASE_PATH}/achievements/ieeexterme.png`}
           certificate="https://certificate.ieeextreme.org/generate-email-certificate/X9BeZKjt2lwNFjP"
         />
         <AchievementCard 
           title="ACES Coders v11.0 - Top 30"
           year="2024"
           team="Team Whitehats"
-          logo="/eshan/achievements/coders.png"
+          logo={`${BASE_PATH}/achievements/coders.png`}
         />
         <AchievementCard 
           title="IEEE Innovation Nation Sri Lanka - 3rd Place"
           year="2023"
           team="Central Province"
-          logo="/eshan/achievements/ieeeinsl.png"
+          logo={`${BASE_PATH}/achievements/ieeeinsl.png`}
         />
       </div>
     </section>
