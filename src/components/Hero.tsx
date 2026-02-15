@@ -34,7 +34,7 @@ export default function Hero() {
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
           Hi, I'm <br/><span className="text-gradient">Eshan Jayasundara</span>
         </h1>
-        <p className="text-3xl text-slate-600 mb-8 font-semibold">
+        <p className="text-2xl md:text-3xl text-slate-600 mb-8 font-semibold">
           AI/ML Engineer
         </p>
         <p className="text-lg text-slate-500 max-w-2xl mb-12 leading-relaxed">
