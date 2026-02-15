@@ -52,7 +52,7 @@ function EducationCard({ degree, institution, period, gpa, logo }: any) {
         <div className="flex-1">
           <h3 className="text-lg font-bold text-primary mb-1">{degree}</h3>
           <p className="text-base text-slate-700 font-semibold mb-1">{institution}</p>
-          <div className="flex justify-between items-center text-slate-500 text-sm">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-slate-500 text-sm gap-1 sm:gap-0">
             <span>{period}</span>
             <span className="font-semibold">{gpa}</span>
           </div>
