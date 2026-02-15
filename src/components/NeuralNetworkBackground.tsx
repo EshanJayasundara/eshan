@@ -9,6 +9,9 @@ export default function NeuralNetworkBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    const container = canvas.parentElement;
+    if (!container) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -17,9 +20,10 @@ export default function NeuralNetworkBackground() {
     let animationFrameId: number;
     let connections: { from: Node; to: Node }[] = [];
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const updateDimensions = () => {
+      const { width, height } = container.getBoundingClientRect();
+      canvas.width = width;
+      canvas.height = height;
       initNetwork();
     };
 
@@ -124,7 +128,9 @@ export default function NeuralNetworkBackground() {
           for (let k = 0; k < connectionsCount; k++) {
             const targetIndex = Math.floor(Math.random() * nodesPerLayer);
             const targetNode = nodes[nextLayerStart + targetIndex];
-            connections.push({ from: currentNode, to: targetNode });
+            if (targetNode) {
+              connections.push({ from: currentNode, to: targetNode });
+            }
           }
         }
       }
@@ -151,7 +157,7 @@ export default function NeuralNetworkBackground() {
       });
 
       // Randomly spawn pulses
-      if (Math.random() < 0.1) {
+      if (Math.random() < 0.1 && connections.length > 0) {
         const randomConn = connections[Math.floor(Math.random() * connections.length)];
         pulses.push(new Pulse(randomConn.from, randomConn.to));
       }
@@ -178,12 +184,16 @@ export default function NeuralNetworkBackground() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
+    });
+
+    resizeObserver.observe(container);
+    updateDimensions();
     animate();
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

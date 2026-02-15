@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
+import NeuralNetworkBackground from "./NeuralNetworkBackground";
+
 export default function Hero() {
   return (
-    <section className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 mb-24 text-center md:text-left">
+    <section className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 mb-24 text-center md:text-left">
+      <NeuralNetworkBackground />
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
