@@ -58,7 +58,7 @@ export default function Navbar() {
       }`}
       style={{ backgroundColor: isScrolled ? undefined : 'transparent' }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-8 md:px-6 md:py-4">
+      <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between relative">
           {/* Logo/Name on Left (if any) - currently empty space */}
           <div className="w-10 order-1" />
