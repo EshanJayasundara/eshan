@@ -175,29 +175,36 @@ export default function NeuralNetworkBackground() {
       const HORIZONTAL_SPACING = 80;
       const VERTICAL_SPACING = 100;
       
-      const layerCount = Math.floor(w / HORIZONTAL_SPACING) + 2;
-      const nodesPerLayer = Math.floor(h / VERTICAL_SPACING) + 6; // More nodes
-      const actualLayerSpacing = w / (layerCount - 1);
-      const actualNodeSpacing = (h + 200) / (nodesPerLayer - 1); // Spread over h + 200
+      // Calculate how many layers we need to cover the width plus extra for bleed on both sides
+      const visibleLayers = Math.ceil(w / HORIZONTAL_SPACING);
+      const layerCount = visibleLayers + 4; // 2 extra for left, 2 extra for right
+      const nodesPerLayer = Math.floor(h / VERTICAL_SPACING) + 6;
+      
+      // We want to spread these layers from -2 to visibleLayers + 1
+      const actualLayerSpacing = HORIZONTAL_SPACING; 
+      const actualNodeSpacing = (h + 200) / (nodesPerLayer - 1);
 
-      for (let i = 0; i < layerCount; i++) {
+      // We use layer indices from -2 to visibleLayers + 1
+      for (let i = -2; i < visibleLayers + 2; i++) {
         for (let j = 0; j < nodesPerLayer; j++) {
           const x = i * actualLayerSpacing + (i % 2 === 0 ? 20 : 0);
-          const y = (j * actualNodeSpacing - 100) + (Math.random() - 0.5) * 40; // Start at -100
+          const y = (j * actualNodeSpacing - 100) + (Math.random() - 0.5) * 40;
           nodes.push(new Node(x, y));
         }
       }
 
       // Create Connections (Feed Forward)
-      // Connect each node in layer i to some nodes in layer i+1
-      for (let i = 0; i < layerCount - 1; i++) {
+      // Connect each node in layer i to nodes in layer i+1
+      // Total layers generated above is (visibleLayers + 2) - (-2) = visibleLayers + 4
+      const actualTotalLayers = visibleLayers + 4;
+      for (let i = 0; i < actualTotalLayers - 1; i++) {
         const currentLayerStart = i * nodesPerLayer;
         const nextLayerStart = (i + 1) * nodesPerLayer;
 
         for (let j = 0; j < nodesPerLayer; j++) {
           const currentNode = nodes[currentLayerStart + j];
+          if (!currentNode) continue;
           
-          // Connect to nearby nodes in next layer (prevents lengthy edges)
           const isMobileCheck = canvas.width < 768;
           const connectionsBase = isMobileCheck ? 1 : 2;
           const connectionsCount = connectionsBase + Math.floor(Math.random() * 2);
