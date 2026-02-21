@@ -19,11 +19,15 @@ export default function NeuralNetworkBackground() {
     let pulses: Pulse[] = [];
     let animationFrameId: number;
     let connections: { from: Node; to: Node }[] = [];
+    let mouse = { x: -1000, y: -1000 };
 
     const updateDimensions = () => {
-      const { width, height } = container.getBoundingClientRect();
-      canvas.width = width;
-      canvas.height = height;
+      const isMobile = window.innerWidth < 768;
+      const offsetTop = isMobile ? 96 : 128; // Matches parent pt-24 and pt-32
+      const offsetBottom = 96; // Matches parent mb-24
+      
+      canvas.width = window.innerWidth;
+      canvas.height = container.offsetHeight + offsetTop + offsetBottom;
       initNetwork();
     };
 
@@ -45,8 +49,24 @@ export default function NeuralNetworkBackground() {
       update() {
         // Gentle hovering motion
         this.phase += 0.02;
-        this.x = this.baseX + Math.cos(this.phase) * 10;
-        this.y = this.baseY + Math.sin(this.phase) * 10;
+        const hoverX = this.baseX + Math.cos(this.phase) * 10;
+        const hoverY = this.baseY + Math.sin(this.phase) * 10;
+
+        // Mouse repulsion
+        const dx = mouse.x - hoverX;
+        const dy = mouse.y - hoverY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const radius = 150;
+
+        if (distance < radius) {
+          const force = (radius - distance) / radius;
+          const angle = Math.atan2(dy, dx);
+          this.x = hoverX - Math.cos(angle) * force * 50;
+          this.y = hoverY - Math.sin(angle) * force * 50;
+        } else {
+          this.x = hoverX;
+          this.y = hoverY;
+        }
       }
 
       draw() {
@@ -98,16 +118,19 @@ export default function NeuralNetworkBackground() {
       connections = [];
       pulses = [];
 
-      const isMobile = canvas.width < 768;
-      const layerCount = Math.ceil(canvas.width / (isMobile ? 150 : 200)) + 1;
-      const nodesPerLayer = isMobile ? 4 : 8;
-      const layerSpacing = canvas.width / (layerCount - 1);
+      const HORIZONTAL_SPACING = 80; // px between layers
+      const VERTICAL_SPACING = 100;  // px between nodes in a layer
+      
+      const layerCount = Math.floor(canvas.width / HORIZONTAL_SPACING) + 2;
+      const nodesPerLayer = Math.floor(canvas.height / VERTICAL_SPACING) + 1;
+      const actualLayerSpacing = canvas.width / (layerCount - 1);
+      const actualNodeSpacing = canvas.height / (nodesPerLayer + 1);
 
       // Create Nodes arranged in layers
       for (let i = 0; i < layerCount; i++) {
         for (let j = 0; j < nodesPerLayer; j++) {
-          const x = i * layerSpacing + (i % 2 === 0 ? 30 : 0); // Slight zigzag offset
-          const y = (canvas.height / (nodesPerLayer + 1)) * (j + 1) + (Math.random() - 0.5) * 50;
+          const x = i * actualLayerSpacing + (i % 2 === 0 ? 20 : 0);
+          const y = actualNodeSpacing * (j + 1) + (Math.random() - 0.5) * 40;
           nodes.push(new Node(x, y));
         }
       }
@@ -121,15 +144,23 @@ export default function NeuralNetworkBackground() {
         for (let j = 0; j < nodesPerLayer; j++) {
           const currentNode = nodes[currentLayerStart + j];
           
-          // Connect to random nodes in next layer (fewer for mobile)
-          const connectionsBase = isMobile ? 1 : 2;
+          // Connect to nearby nodes in next layer (prevents lengthy edges)
+          const isMobileCheck = canvas.width < 768;
+          const connectionsBase = isMobileCheck ? 1 : 2;
           const connectionsCount = connectionsBase + Math.floor(Math.random() * 2);
+          const offsets = [-1, 0, 1];
           
+          const usedTargets = new Set();
           for (let k = 0; k < connectionsCount; k++) {
-            const targetIndex = Math.floor(Math.random() * nodesPerLayer);
-            const targetNode = nodes[nextLayerStart + targetIndex];
-            if (targetNode) {
-              connections.push({ from: currentNode, to: targetNode });
+            const offset = offsets[Math.floor(Math.random() * offsets.length)];
+            const targetIndex = Math.max(0, Math.min(nodesPerLayer - 1, j + offset));
+            
+            if (!usedTargets.has(targetIndex)) {
+              const targetNode = nodes[nextLayerStart + targetIndex];
+              if (targetNode) {
+                connections.push({ from: currentNode, to: targetNode });
+                usedTargets.add(targetIndex);
+              }
             }
           }
         }
@@ -188,11 +219,27 @@ export default function NeuralNetworkBackground() {
       updateDimensions();
     });
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    
     resizeObserver.observe(container);
     updateDimensions();
     animate();
 
     return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
@@ -201,7 +248,7 @@ export default function NeuralNetworkBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none opacity-40"
+      className="absolute left-1/2 -translate-x-1/2 -top-24 md:-top-32 w-screen z-0 pointer-events-none opacity-40"
     />
   );
 }
