@@ -4,14 +4,11 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
-import NeuralNetworkBackground from "./NeuralNetworkBackground";
-
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 mb-24 text-center md:text-left">
-      <NeuralNetworkBackground />
+    <section className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-24 mb-24 text-center md:text-left">
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -33,13 +30,13 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="flex-1 flex flex-col items-center md:items-start"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-foreground">
           Hi, I'm <br/><span className="text-gradient">Eshan Jayasundara</span>
         </h1>
-        <p className="text-2xl md:text-3xl text-slate-600 mb-8 font-semibold">
+        <p className="text-2xl md:text-3xl text-slate-700 dark:text-white mb-8 font-semibold">
           AI/ML Engineer
         </p>
-        <p className="text-lg text-slate-500 max-w-2xl mb-12 leading-relaxed">
+        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mb-12 leading-relaxed">
           Specializing in <strong>Classical Machine Learning</strong>, <strong>Natural Language Processing</strong>, <strong>Large Language Models</strong> and <strong>AI Agents</strong>, with hands-on experience building and deploying production-grade ML pipelines. Focused on delivering scalable and reliable AI solutions.
         </p>
         

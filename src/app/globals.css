@@ -11,6 +11,15 @@
   --card-border: rgba(157, 23, 77, 0.1);
 }
 
+.dark {
+  --background: #000000;
+  --foreground: #f8fafc;
+  --primary: #f472b6;
+  --accent: #d8b4fe;
+  --card-bg: rgba(15, 23, 42, 0.85);
+  --card-border: rgba(244, 114, 182, 0.2);
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -29,10 +38,12 @@ body {
   background: linear-gradient(to right, var(--primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 @layer base {
   h1, h2, h3, h4 {
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight text-slate-900 dark:text-white;
   }
 }

@@ -18,7 +18,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -49,28 +49,28 @@ function ProjectCard({ title, description, tags, github, demo, paper, thumbnail 
           </div>
         )}
         <div className="flex flex-col flex-1">
-          <h3 className="text-lg font-bold text-slate-800 mb-2 leading-tight">{title}</h3>
-          <p className="text-slate-600 text-sm leading-relaxed mb-4">{description}</p>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight">{title}</h3>
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {tags.map((tag: string) => (
-              <span key={tag} className="px-2.5 py-0.5 bg-white/60 border border-slate-200 rounded-full text-[10px] text-slate-700 font-semibold uppercase tracking-wider">
+              <span key={tag} className="px-2.5 py-0.5 bg-white/60 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-full text-[10px] text-slate-700 dark:text-slate-300 font-semibold uppercase tracking-wider">
                 {tag}
               </span>
             ))}
           </div>
           <div className="flex gap-4 mt-auto">
             {github && (
-              <a href={github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
+              <a href={github} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
                 <Github className="w-4 h-4" /> Code
               </a>
             )}
             {demo && (
-              <a href={demo} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
+              <a href={demo} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
                 <ExternalLink className="w-4 h-4" /> Demo
               </a>
             )}
             {paper && (
-              <a href={paper} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
+              <a href={paper} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
                 <FileText className="w-4 h-4" /> Paper
               </a>
             )}

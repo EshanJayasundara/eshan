@@ -18,7 +18,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -51,10 +51,10 @@ function VolunteerCard({ role, organization, period, description, logo }: any) {
           </div>
         )}
         <div className="flex-1">
-          <h3 className="text-base font-bold text-slate-800 leading-tight mb-1">{role}</h3>
+          <h3 className="text-base font-bold text-slate-800 dark:text-white leading-tight mb-1">{role}</h3>
           <p className="text-primary text-sm font-semibold">{organization}</p>
-          {period && <p className="text-slate-400 text-xs mt-1">{period}</p>}
-          {description && <p className="text-slate-600 text-sm mt-3 leading-relaxed">{description}</p>}
+          {period && <p className="text-slate-500 dark:text-slate-500 text-xs mt-1">{period}</p>}
+          {description && <p className="text-slate-700 dark:text-slate-300 text-sm mt-3 leading-relaxed">{description}</p>}
         </div>
       </div>
     </motion.div>

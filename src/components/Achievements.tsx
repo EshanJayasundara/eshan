@@ -19,7 +19,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -53,14 +53,14 @@ function AchievementCard({ title, year, team, certificate, logo }: any) {
         )}
         <div className="flex-1">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-bold text-slate-800 leading-snug">{title}</h3>
+            <h3 className="text-base font-bold text-slate-800 dark:text-white leading-snug">{title}</h3>
             {certificate && (
               <a href={certificate} target="_blank" rel="noopener noreferrer" className="text-primary hover:scale-110 transition-transform flex-shrink-0">
                 <Award className="w-5 h-5" />
               </a>
             )}
           </div>
-          <p className="text-slate-500 text-sm mt-1 flex items-center gap-2">
+          <p className="text-slate-600 dark:text-slate-400 text-sm mt-1 flex items-center gap-2">
             <span className="font-semibold text-primary/80">{team}</span>
             {team && year && <span>•</span>}
             <span>{year}</span>

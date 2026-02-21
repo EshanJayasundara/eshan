@@ -18,7 +18,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -36,12 +36,12 @@ function SkillCard({ title, items }: { title: string; items: { name: string; log
       transition={{ duration: 0.4 }}
       className="glass p-5 rounded-2xl h-full"
     >
-      <h3 className="text-base font-bold mb-4 text-slate-800 uppercase tracking-wider">{title}</h3>
+      <h3 className="text-base font-bold mb-4 text-slate-800 dark:text-white uppercase tracking-wider">{title}</h3>
       <div className="flex flex-wrap gap-2.5">
         {items.map((item) => (
           <div 
             key={item.name} 
-            className="flex items-center gap-3 px-3.5 py-2 bg-white/60 border border-slate-200 rounded-xl hover:bg-white hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+            className="flex items-center gap-3 px-3.5 py-2 bg-white/60 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-xl hover:bg-white dark:hover:bg-white/20 hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
           >
             {item.logo && (
               <div className="w-7 h-7 relative flex-shrink-0">
@@ -53,7 +53,7 @@ function SkillCard({ title, items }: { title: string; items: { name: string; log
                 />
               </div>
             )}
-            <span className="text-xs md:text-sm text-slate-700 font-bold">{item.name}</span>
+            <span className="text-xs md:text-sm text-slate-800 dark:text-slate-200 font-bold">{item.name}</span>
           </div>
         ))}
       </div>

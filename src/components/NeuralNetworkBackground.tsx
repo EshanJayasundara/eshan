@@ -22,13 +22,20 @@ export default function NeuralNetworkBackground() {
     let mouse = { x: -1000, y: -1000 };
 
     const updateDimensions = () => {
-      const isMobile = window.innerWidth < 768;
-      const offsetTop = isMobile ? 96 : 128; // Matches parent pt-24 and pt-32
-      const offsetBottom = 96; // Matches parent mb-24
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       
-      canvas.width = window.innerWidth;
-      canvas.height = container.offsetHeight + offsetTop + offsetBottom;
-      initNetwork();
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      
+      if (ctx) {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      initNetwork(w, h);
     };
 
     class Node {
@@ -38,12 +45,15 @@ export default function NeuralNetworkBackground() {
       baseY: number;
       phase: number;
 
+      size: number;
+
       constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
         this.baseX = x;
         this.baseY = y;
         this.phase = Math.random() * Math.PI * 2;
+        this.size = 2 + Math.random() * 2;
       }
 
       update() {
@@ -71,9 +81,29 @@ export default function NeuralNetworkBackground() {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = "rgba(66, 133, 244, 0.6)"; // Blue
+        
+        // Mouse proximity effect
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const mouseGlow = Math.max(0, 1 - distance / 150);
+        
+        // Pulsing glow
+        const pulseEffect = Math.sin(this.phase * 2) * 0.5 + 0.5;
+        const glowSize = this.size * (2 + pulseEffect + mouseGlow * 2);
+
+        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowSize);
+        gradient.addColorStop(0, `rgba(66, 133, 244, ${0.5 + mouseGlow * 0.4})`);
+        gradient.addColorStop(1, "rgba(66, 133, 244, 0)");
+        
+        ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, glowSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `rgba(66, 133, 244, ${0.8 + mouseGlow * 0.2})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size + mouseGlow, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -105,32 +135,55 @@ export default function NeuralNetworkBackground() {
         const x = this.from.x + (this.to.x - this.from.x) * this.progress;
         const y = this.from.y + (this.to.y - this.from.y) * this.progress;
 
-        ctx.fillStyle = "#9b72cb"; // Purple pulse
+        // Draw tail (comet effect)
+        const tailSegments = 8;
+        for (let i = 0; i < tailSegments; i++) {
+          const t = Math.max(0, this.progress - (i * 0.015));
+          const tx = this.from.x + (this.to.x - this.from.x) * t;
+          const ty = this.from.y + (this.to.y - this.from.y) * t;
+          const alpha = (1 - i / tailSegments) * 0.5;
+          const size = 2 * (1 - i / tailSegments);
+          
+          ctx.fillStyle = `rgba(155, 114, 203, ${alpha})`;
+          ctx.beginPath();
+          ctx.arc(tx, ty, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Glowing head
+        const headGlow = ctx.createRadialGradient(x, y, 0, x, y, 6);
+        headGlow.addColorStop(0, "rgba(155, 114, 203, 0.8)");
+        headGlow.addColorStop(1, "rgba(155, 114, 203, 0)");
+        
+        ctx.fillStyle = headGlow;
         ctx.beginPath();
-        // Draw a glowing head
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#9b72cb";
+        ctx.beginPath();
+        ctx.arc(x, y, 2.5, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    const initNetwork = () => {
+    const initNetwork = (w: number, h: number) => {
       nodes = [];
       connections = [];
       pulses = [];
 
-      const HORIZONTAL_SPACING = 80; // px between layers
-      const VERTICAL_SPACING = 100;  // px between nodes in a layer
+      const HORIZONTAL_SPACING = 80;
+      const VERTICAL_SPACING = 100;
       
-      const layerCount = Math.floor(canvas.width / HORIZONTAL_SPACING) + 2;
-      const nodesPerLayer = Math.floor(canvas.height / VERTICAL_SPACING) + 1;
-      const actualLayerSpacing = canvas.width / (layerCount - 1);
-      const actualNodeSpacing = canvas.height / (nodesPerLayer + 1);
+      const layerCount = Math.floor(w / HORIZONTAL_SPACING) + 2;
+      const nodesPerLayer = Math.floor(h / VERTICAL_SPACING) + 6; // More nodes
+      const actualLayerSpacing = w / (layerCount - 1);
+      const actualNodeSpacing = (h + 200) / (nodesPerLayer - 1); // Spread over h + 200
 
-      // Create Nodes arranged in layers
       for (let i = 0; i < layerCount; i++) {
         for (let j = 0; j < nodesPerLayer; j++) {
           const x = i * actualLayerSpacing + (i % 2 === 0 ? 20 : 0);
-          const y = actualNodeSpacing * (j + 1) + (Math.random() - 0.5) * 40;
+          const y = (j * actualNodeSpacing - 100) + (Math.random() - 0.5) * 40; // Start at -100
           nodes.push(new Node(x, y));
         }
       }
@@ -169,7 +222,10 @@ export default function NeuralNetworkBackground() {
 
     const animate = () => {
       if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const dpr = window.devicePixelRatio || 1;
+      const w = canvas.width / dpr;
+      const h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
 
       // Update and Draw Nodes
       nodes.forEach(node => {
@@ -178,9 +234,14 @@ export default function NeuralNetworkBackground() {
       });
 
       // Draw Static Connections
-      ctx.strokeStyle = "rgba(66, 133, 244, 0.15)"; // Faint blue lines
-      ctx.lineWidth = 2;
       connections.forEach(conn => {
+        const gradient = ctx.createLinearGradient(conn.from.x, conn.from.y, conn.to.x, conn.to.y);
+        gradient.addColorStop(0, "rgba(66, 133, 244, 0.3)");
+        gradient.addColorStop(1, "rgba(155, 114, 203, 0.3)");
+        
+        ctx.strokeStyle = gradient;
+        const isDark = document.documentElement.classList.contains("dark");
+        ctx.lineWidth = isDark ? 1.5 : 0.8;
         ctx.beginPath();
         ctx.moveTo(conn.from.x, conn.from.y);
         ctx.lineTo(conn.to.x, conn.to.y);
@@ -248,7 +309,7 @@ export default function NeuralNetworkBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute left-1/2 -translate-x-1/2 -top-24 md:-top-32 w-screen z-0 pointer-events-none opacity-40"
+      className="fixed inset-0 w-full h-full z-0 pointer-events-none opacity-50 dark:opacity-60"
     />
   );
 }

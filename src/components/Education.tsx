@@ -19,7 +19,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -53,8 +53,8 @@ function EducationCard({ degree, institution, period, gpa, logo }: any) {
         )}
         <div className="flex-1">
           <h3 className="text-lg font-bold text-primary mb-1">{degree}</h3>
-          <p className="text-base text-slate-700 font-semibold mb-1">{institution}</p>
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-slate-500 text-sm gap-1 sm:gap-0">
+          <p className="text-base text-slate-700 dark:text-slate-200 font-semibold mb-1">{institution}</p>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-slate-600 dark:text-slate-400 text-sm gap-1 sm:gap-0">
             <span>{period}</span>
             <span className="font-semibold">{gpa}</span>
           </div>

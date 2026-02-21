@@ -18,7 +18,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -50,7 +50,7 @@ function CertificationCard({ platform, link, courses, logo }: any) {
             />
           </div>
         )}
-        <a href={link} target="_blank" rel="noopener noreferrer" className="text-2xl font-bold text-slate-800 hover:text-primary transition-colors flex items-center gap-2">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="text-2xl font-bold text-slate-800 dark:text-white hover:text-primary transition-colors flex items-center gap-2">
           {platform} <ExternalLink className="w-5 h-5" />
         </a>
       </div>
@@ -58,7 +58,7 @@ function CertificationCard({ platform, link, courses, logo }: any) {
         {courses.map((course: any, idx: number) => (
           <li key={idx} className="flex items-center gap-4 group ml-3">
             {course.issuerLogo && (
-              <div className="w-10 h-10 relative flex-shrink-0 rounded-xl overflow-hidden border border-slate-100 bg-white/50 p-1.5">
+              <div className="w-10 h-10 relative flex-shrink-0 rounded-xl overflow-hidden border border-slate-100 dark:border-white/10 bg-white/50 dark:bg-white/20 p-1.5">
                 <Image 
                   src={course.issuerLogo} 
                   alt="Issuer logo"
@@ -68,11 +68,11 @@ function CertificationCard({ platform, link, courses, logo }: any) {
               </div>
             )}
             <div className="flex-1">
-              <span className="text-slate-700 font-semibold group-hover:text-primary transition-colors block">
+              <span className="text-slate-700 dark:text-slate-200 font-semibold group-hover:text-primary transition-colors block">
                 {course.title}
               </span>
               {course.issuer && (
-                <span className="text-xs text-slate-400 font-medium">{course.issuer}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">{course.issuer}</span>
               )}
             </div>
           </li>

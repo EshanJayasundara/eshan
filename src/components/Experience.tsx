@@ -18,7 +18,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
       className="flex items-center gap-3 mb-6"
     >
       <Icon className="w-6 h-6 text-primary" />
-      <h2 className="text-3xl font-bold text-slate-800">{title}</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-white">{title}</h2>
       <div className="h-px flex-1 bg-gradient-to-r from-slate-300 to-transparent ml-4" />
     </motion.div>
   );
@@ -52,18 +52,18 @@ function ExperienceCard({ company, role, period, website, highlights, logo }: an
         )}
         <div className="flex-1 flex flex-col md:flex-row justify-between">
           <div>
-            <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-0.5">{role}</h3>
+            <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white mb-0.5">{role}</h3>
             <a href={website} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline flex items-center gap-1 text-sm md:text-base">
               {company} <ExternalLink className="w-4 h-4" />
             </a>
-            <span className="text-slate-400 font-medium text-xs md:hidden block mt-1">{period}</span>
+            <span className="text-slate-500 dark:text-slate-400 font-medium text-xs md:hidden block mt-1">{period}</span>
           </div>
-          <span className="text-slate-400 font-medium text-sm mt-2 md:mt-0 hidden md:block">{period}</span>
+          <span className="text-slate-500 dark:text-slate-400 font-medium text-sm mt-2 md:mt-0 hidden md:block">{period}</span>
         </div>
       </div>
       <ul className="space-y-1.5">
         {highlights.map((highlight: string, idx: number) => (
-          <li key={idx} className="text-slate-600 text-sm leading-relaxed flex items-start gap-2 ml-2">
+          <li key={idx} className="text-slate-700 dark:text-slate-400 text-sm leading-relaxed flex items-start gap-2 ml-2">
             <span className="text-primary select-none mt-[0px]">⚬</span>
             <span>{highlight}</span>
           </li>
