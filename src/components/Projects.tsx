@@ -26,7 +26,7 @@ const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
   );
 };
 
-type Category = "All" | "AI/ML" | "Software Engineering" | "IoT" | "Hardware";
+type Category = "All" | "AI/ML" | "SE" | "IoT" | "Hardware";
 
 interface Project {
   title: string;
@@ -177,7 +177,7 @@ const PROJECTS_DATA: Project[] = [
     title: "CryptoPOS - DEOPLabs",
     description: "Custom Cryptocurrency Point-of-Sale (POS) & Invoicing application designed to seamlessly bridge fiat and crypto payments for modern merchants. Features secure Xaman Wallet integration, real-time USD to XRP conversion, and instant QR code generation.",
     tags: ["Fintech", "XRP Ledger", "Xaman Wallet", "React", "Crypto Payments"],
-    category: "Software Engineering",
+    category: "SE",
     demo: "https://www.linkedin.com/posts/multi-fusion-engineering_deoplabs-appdevelopment-cryptopos-ugcPost-7412177716336197632-a3Hi",
     thumbnail: `${BASE_PATH}/projects/Crypto Accepted Here.png`,
   },
@@ -193,7 +193,7 @@ const PROJECTS_DATA: Project[] = [
     title: "Medical Clinic Manager",
     description: "Full-stack web application for medical clinic management featuring a Spring Boot backend secured with JWT and a MySQL database configuration.",
     tags: ["Spring Boot", "JWT", "MySQL", "Java", "Backend"],
-    category: "Software Engineering",
+    category: "SE",
     github: "https://github.com/EshanJayasundara/e19-co226-Medical-Clinic-Manager",
     thumbnail: `${BASE_PATH}/projects/Medical Clinic Manager.png`,
   },
@@ -201,7 +201,7 @@ const PROJECTS_DATA: Project[] = [
     title: "Department Space Management System",
     description: "A solution for real-time space booking and management at the Department of Computer Engineering, University of Peradeniya.",
     tags: ["Web App", "Space Management", "Real-time", "Booking System"],
-    category: "Software Engineering",
+    category: "SE",
     github: "https://github.com/EshanJayasundara/e19-co225-Department-Space-Management-System-Mobile-App",
     demo: "https://cepdnaclk.github.io/e19-co225-Department-Space-Management-System-Mobile-App/",
     thumbnail: `${BASE_PATH}/projects/Department Space Management System.png`,
@@ -210,7 +210,7 @@ const PROJECTS_DATA: Project[] = [
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const categories: Category[] = ["All", "AI/ML", "Software Engineering", "IoT", "Hardware"];
+  const categories: Category[] = ["All", "AI/ML", "SE", "IoT", "Hardware"];
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return PROJECTS_DATA;
