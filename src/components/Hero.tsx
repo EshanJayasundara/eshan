@@ -41,17 +41,29 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
-          <a href="https://github.com/EshanJayasundara" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-2xl hover:scale-110 hover:text-primary transition-all duration-300">
-            <Github className="w-6 h-6" />
+          <a href="https://github.com/EshanJayasundara" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-0 hover:gap-3 p-4 glass rounded-2xl hover:scale-105 hover:text-primary transition-all duration-300 ease-in-out">
+            <Github className="w-6 h-6 shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-medium">
+              GitHub
+            </span>
           </a>
-          <a href="https://linkedin.com/in/eshan-jayasundara" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-2xl hover:scale-110 hover:text-primary transition-all duration-300">
-            <Linkedin className="w-6 h-6" />
+          <a href="https://linkedin.com/in/eshan-jayasundara" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-0 hover:gap-3 p-4 glass rounded-2xl hover:scale-105 hover:text-primary transition-all duration-300 ease-in-out">
+            <Linkedin className="w-6 h-6 shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-medium">
+              LinkedIn
+            </span>
           </a>
-          <a href="mailto:jayasundara.jmeg@gmail.com" className="p-4 glass rounded-2xl hover:scale-110 hover:text-primary transition-all duration-300">
-            <Mail className="w-6 h-6" />
+          <a href="tel:+94766370774" className="group flex items-center gap-0 hover:gap-3 p-4 glass rounded-2xl hover:scale-105 hover:text-primary transition-all duration-300 ease-in-out">
+            <Phone className="w-6 h-6 shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-medium">
+              +94 766 370 774
+            </span>
           </a>
-          <a href="tel:+94766370774" className="p-4 glass rounded-2xl hover:scale-110 hover:text-primary transition-all duration-300">
-            <Phone className="w-6 h-6" />
+          <a href="mailto:jayasundara.jmeg@gmail.com" className="group flex items-center gap-0 hover:gap-3 p-4 glass rounded-2xl hover:scale-105 hover:text-primary transition-all duration-300 ease-in-out">
+            <Mail className="w-6 h-6 shrink-0" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-medium">
+              jayasundara.jmeg@gmail.com
+            </span>
           </a>
         </div>
       </motion.div>

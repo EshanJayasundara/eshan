@@ -36,9 +36,9 @@ function EducationCard({ degree, institution, period, gpa, logo }: any) {
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -3 }}
-      className="glass p-5 rounded-2xl transition-all duration-300"
+      transition={{ duration: 0.15 }}
+      whileHover={{ y: -3, transition: { duration: 0.1 } }}
+      className="glass p-5 rounded-2xl transition-all duration-150"
     >
       <div className="flex gap-5">
         {logo && (
@@ -77,7 +77,7 @@ export default function Education() {
           logo={`${BASE_PATH}/uop.jpg`}
         />
         <EducationCard 
-          degree="GCE Advanced Level - Physical Science"
+          degree="GCE Advanced Level - Physical Science Stream"
           institution="Central College Kuliyapitiya"
           period="2019"
           gpa="Z Score: 2.1645 | District Rank: 40"

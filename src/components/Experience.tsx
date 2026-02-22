@@ -35,9 +35,9 @@ function ExperienceCard({ company, role, period, website, highlights, logo }: an
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -3 }}
-      className="glass p-6 rounded-2xl transition-all duration-300"
+      transition={{ duration: 0.15 }}
+      whileHover={{ y: -3, transition: { duration: 0.1 } }}
+      className="glass p-6 rounded-2xl transition-all duration-150"
     >
       <div className="flex gap-4 md:gap-6 mb-3">
         {logo && (

@@ -70,7 +70,7 @@ export default function Navbar() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-4 py-2 text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-200"
+                  className="px-4 py-2 text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-150"
                 >
                   {item.name}
                 </button>
@@ -103,14 +103,14 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.15 }}
                       className="absolute top-full right-0 mt-1 w-48 glass rounded-xl shadow-xl border border-white/20 p-2 overflow-hidden"
                     >
                       {dropdownItems.map((item) => (
                         <button
                           key={item.name}
                           onClick={() => scrollToSection(item.href)}
-                          className="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-200"
+                          className="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-150"
                         >
                           {item.name}
                         </button>
@@ -150,7 +150,7 @@ export default function Navbar() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-200"
+                  className="block w-full text-left px-4 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-all duration-150"
                 >
                   {item.name}
                 </button>

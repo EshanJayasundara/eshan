@@ -36,9 +36,9 @@ function AchievementCard({ title, year, team, certificate, logo }: any) {
       ref={ref}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -3 }}
-      className="glass p-5 rounded-2xl transition-all duration-300"
+      transition={{ duration: 0.15 }}
+      whileHover={{ y: -3, transition: { duration: 0.1 } }}
+      className="glass p-5 rounded-2xl transition-all duration-150"
     >
       <div className="flex gap-4 items-center">
         {logo && (

@@ -41,7 +41,7 @@ function SkillCard({ title, items }: { title: string; items: { name: string; log
         {items.map((item) => (
           <div 
             key={item.name} 
-            className="flex items-center gap-3 px-3.5 py-2 bg-white/60 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-xl hover:bg-white dark:hover:bg-white/20 hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+            className="flex items-center gap-3 px-3.5 py-2 bg-white/60 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-xl hover:bg-white dark:hover:bg-white/20 hover:border-primary/30 hover:shadow-md transition-all duration-150 group"
           >
             {item.logo && (
               <div className="w-7 h-7 relative flex-shrink-0">
@@ -49,7 +49,7 @@ function SkillCard({ title, items }: { title: string; items: { name: string; log
                   src={item.logo} 
                   alt={item.name} 
                   fill 
-                  className="object-contain group-hover:scale-110 transition-transform duration-300 rounded-sm" 
+                  className="object-contain group-hover:scale-110 transition-transform duration-200 rounded-sm" 
                 />
               </div>
             )}

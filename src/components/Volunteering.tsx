@@ -35,9 +35,9 @@ function VolunteerCard({ role, organization, period, description, logo }: any) {
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -2 }}
-      className="glass p-5 rounded-2xl transition-all duration-300"
+      transition={{ duration: 0.15 }}
+      whileHover={{ y: -2, transition: { duration: 0.1 } }}
+      className="glass p-5 rounded-2xl transition-all duration-150"
     >
       <div className="flex gap-4 items-start">
         {logo && (
