@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Code, Github, ExternalLink, FileText } from "lucide-react";
+import { Code, Github, ExternalLink, FileText, ChevronDown, ChevronUp, Maximize2, X } from "lucide-react";
 import Image from "next/image";
 
 const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => {
@@ -35,11 +35,15 @@ interface Project {
   category: Category;
   github?: string;
   demo?: string;
+  demoLabel?: string;
   paper?: string;
+  paperLabel?: string;
+  diagram?: string;
   thumbnail: string;
 }
 
-function ProjectCard({ title, description, tags, github, demo, paper, thumbnail }: Omit<Project, 'category'>) {
+function ProjectCard({ title, description, tags, github, demo, demoLabel, paper, paperLabel, diagram, thumbnail, onViewDiagram }: Omit<Project, 'category'> & { onViewDiagram: (url: string, title: string) => void }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   
@@ -66,7 +70,19 @@ function ProjectCard({ title, description, tags, github, demo, paper, thumbnail 
       )}
       <div className="flex flex-col flex-1">
         <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2 leading-tight">{title}</h3>
-        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3">{description}</p>
+        <p className={`text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-3"}`}>{description}</p>
+        {description.length > 120 && (
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex items-center gap-1 text-primary text-[11px] font-bold uppercase tracking-wider mb-4 hover:opacity-80 transition-opacity"
+          >
+            {isExpanded ? (
+              <>See Less <ChevronUp className="w-3 h-3" /></>
+            ) : (
+              <>See More <ChevronDown className="w-3 h-3" /></>
+            )}
+          </button>
+        )}
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag: string) => (
             <span key={tag} className="px-2.5 py-0.5 bg-white/60 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-full text-[10px] text-slate-700 dark:text-slate-300 font-semibold uppercase tracking-wider">
@@ -82,13 +98,21 @@ function ProjectCard({ title, description, tags, github, demo, paper, thumbnail 
           )}
           {demo && (
             <a href={demo} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
-              <ExternalLink className="w-4 h-4" /> Demo
+              <ExternalLink className="w-4 h-4" /> {demoLabel || "Demo"}
             </a>
           )}
           {paper && (
             <a href={paper} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest">
-              <FileText className="w-4 h-4" /> Paper
+              <FileText className="w-4 h-4" /> {paperLabel || "Paper"}
             </a>
+          )}
+          {diagram && (
+            <button 
+              onClick={() => onViewDiagram(diagram, title)}
+              className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest"
+            >
+              <Maximize2 className="w-4 h-4" /> Circuit
+            </button>
           )}
         </div>
       </div>
@@ -122,6 +146,7 @@ const PROJECTS_DATA: Project[] = [
     tags: ["PyTorch", "Transformers", "Tokenization", "Quantization"],
     category: "AI/ML",
     demo: "https://huggingface.co/eshangj/sin-qwen-3B-base",
+    demoLabel: "More Info",
     thumbnail: `${BASE_PATH}/projects/SLM for Sinhala (SinQWEN).png`,
   },
   {
@@ -174,11 +199,12 @@ const PROJECTS_DATA: Project[] = [
     thumbnail: `${BASE_PATH}/projects/First Person AR Game with Localization.png`,
   },
   {
-    title: "CryptoPOS - DEOPLabs",
-    description: "Custom Cryptocurrency Point-of-Sale (POS) & Invoicing application designed to seamlessly bridge fiat and crypto payments for modern merchants. Features secure Xaman Wallet integration, real-time USD to XRP conversion, and instant QR code generation.",
+    title: "Crypto Accepted Here",
+    description: "A freelancing project developed for a client in Texas, USA. This custom Cryptocurrency Point-of-Sale (POS) & Invoicing application designed to seamlessly bridge fiat and crypto payments for modern merchants features secure Xaman Wallet integration, real-time USD to XRP conversion, and instant QR code generation.",
     tags: ["Fintech", "XRP Ledger", "Xaman Wallet", "React", "Crypto Payments"],
     category: "SE",
     demo: "https://www.linkedin.com/posts/multi-fusion-engineering_deoplabs-appdevelopment-cryptopos-ugcPost-7412177716336197632-a3Hi",
+    demoLabel: "More Info",
     thumbnail: `${BASE_PATH}/projects/Crypto Accepted Here.png`,
   },
   {
@@ -204,12 +230,50 @@ const PROJECTS_DATA: Project[] = [
     category: "SE",
     github: "https://github.com/EshanJayasundara/e19-co225-Department-Space-Management-System-Mobile-App",
     demo: "https://cepdnaclk.github.io/e19-co225-Department-Space-Management-System-Mobile-App/",
+    demoLabel: "More Info",
     thumbnail: `${BASE_PATH}/projects/Department Space Management System.png`,
+  },
+  {
+    title: "5V Regulator",
+    description: "Development and testing of a 5V voltage regulator circuit using the LM7805 IC, providing a stable 5V output from inputs above 7V. Verified through simulation in Proteus and physical breadboard testing.",
+    tags: ["LM7805", "Circuit Design", "Proteus", "Hardware"],
+    category: "Hardware",
+    paper: "https://drive.google.com/file/d/12anGX6aE-348ZMvRyi42hWcsONIugalA/view?usp=drive_link",
+    paperLabel: "Doc",
+    thumbnail: `${BASE_PATH}/projects/5V Regulator.png`,
+  },
+  {
+    title: "BCD to 7-Segment Decoder",
+    description: "Design and implementation of a BCD to 7-segment decoder using Karnaugh maps for logic simplification. Features full schematic integration and verification through Proteus 8 simulation.",
+    tags: ["BCD Decoder", "7-Segment", "Logic Gates", "Proteus", "Hardware"],
+    category: "Hardware",
+    demo: "https://drive.google.com/file/d/1lHWaFNCV3EIIM_46EJQjhsLsB-48ndoD/view?usp=drive_link",
+    paper: "https://drive.google.com/file/d/1EzfwNlxkj9KaRzsjjEtypPYO3G7dDFFS/view?usp=drive_link",
+    paperLabel: "Doc",
+    thumbnail: `${BASE_PATH}/projects/BCD to 7-Segment Decoder.png`,
+  },
+  {
+    title: "4-Bit Adder/Subtractor",
+    description: "Implementation of a 4-bit binary adder/subtractor circuit using the 74LS83 Full Adder and 74LS86 XOR ICs. The design includes output decoding to a 7-segment display via a 74LS47 IC.",
+    tags: ["74LS83", "Binary Adder", "Digital Logic", "Circuit Design", "Hardware"],
+    category: "Hardware",
+    paper: "https://drive.google.com/file/d/10XKfKk9-DI_XKM9L1mNBSXx3gmMCfzez/view?usp=drive_link",
+    paperLabel: "Doc",
+    thumbnail: `${BASE_PATH}/projects/4-Bit Adder-Subtractor.png`,
+  },
+  {
+    title: "Reverse Engineered LED Bulb",
+    description: "Reverse-engineered non-isolated mains-powered LED driver with integrated battery backup functionality. Features integrated AC-to-DC conversion, constant current driving, and automatic emergency switchover.",
+    tags: ["Hardware", "Reverse Engineering", "Power Electronics", "PCB Design"],
+    category: "Hardware",
+    thumbnail: `${BASE_PATH}/projects/Reverse Engineered Orange LED Bulb.png`,
+    diagram: `${BASE_PATH}/projects/Reverse Engineered Orange LED Bulb Circuit.jpg`,
   },
 ];
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [activeDiagram, setActiveDiagram] = useState<{ url: string; title: string } | null>(null);
   const categories: Category[] = ["All", "AI/ML", "SE", "IoT", "Hardware"];
 
   const filteredProjects = useMemo(() => {
@@ -245,10 +309,51 @@ export default function Projects() {
       >
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <ProjectCard 
+              key={project.title} 
+              {...project} 
+              onViewDiagram={(url, title) => setActiveDiagram({ url, title })}
+            />
           ))}
         </AnimatePresence>
       </motion.div>
+
+      <AnimatePresence>
+        {activeDiagram && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-slate-900/90 backdrop-blur-md"
+            onClick={() => setActiveDiagram(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-slate-100 dark:border-white/10">
+                <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white">{activeDiagram.title} - Circuit Diagram</h3>
+                <button 
+                  onClick={() => setActiveDiagram(null)}
+                  className="p-2 bg-slate-100 dark:bg-white/10 rounded-full text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-auto p-4 md:p-6 bg-slate-50 dark:bg-slate-950/50 flex items-center justify-center">
+                <img 
+                  src={activeDiagram.url} 
+                  alt={`${activeDiagram.title} circuit diagram`}
+                  className="w-auto h-auto max-w-full max-h-full shadow-lg rounded-lg outline outline-1 outline-slate-200 dark:outline-white/10"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
