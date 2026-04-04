@@ -124,6 +124,14 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/eshan";
 
 const PROJECTS_DATA: Project[] = [
   {
+    title: "Freelance Marketplace Backend",
+    description: "A modern, scalable backend for a freelance marketplace built with NestJS. Implements a modular monolith architecture with support for role-based access control, complex job/bid lifecycles, and a multi-provider infrastructure.",
+    tags: ["NestJS", "PostgreSQL", "Prisma", "Cloudflare R2", "Passport.js", "SendGrid"],
+    category: "SE",
+    github: "https://github.com/DEOPlabs/freelance_marketplace_backend",
+    thumbnail: `${BASE_PATH}/projects/frrlance-marketplace.png`,
+  },
+  {
     title: "AI Software Engineer for GitHub Issue Resolution",
     description: "Novel graph-based approach to localize erroneous files in large code repositories using Chain-of-Thought reasoning and AI agents.",
     tags: ["LangChain", "ChromaDB", "OpenAI", "Django", "GCP"],
