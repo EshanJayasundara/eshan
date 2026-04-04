@@ -102,16 +102,13 @@ export default function Experience() {
       <SectionHeader title="Experience" icon={Briefcase} />
       <div className="space-y-5">
         <ExperienceCard
-          company="IronOne Technologies LLC"
-          role="Trainee Machine Learning Engineer"
-          period="July 2024 - January 2025"
-          website="https://irononeailabs.com"
-          logo={`${BASE_PATH}/ironone.jpg`}
+          company="Synopsys Inc."
+          role="R&D Engineer"
+          period="March 2026 - Present"
+          website="https://www.synopsys.com/"
+          logo={`${BASE_PATH}/synopsys.jpg`}
           highlights={[
-            "Enhanced model explainability using SHAP to improve stakeholder trust and regulatory compliance",
-            "Specialized in handling imbalanced datasets through advanced experimentation",
-            "Designed custom loss functions to boost model performance on minority classes",
-            "Improved recall for delinquent customers from 0.39 to 0.47, while maintaining recall of non-delinquent customers at 0.98",
+            "Contributing to a agentic ai system for automating hardware synthesis debug and verification",
           ]}
         />
         <ExperienceCard
@@ -127,13 +124,16 @@ export default function Experience() {
           ]}
         />
         <ExperienceCard
-          company="Synopsys Inc."
-          role="R&D Engineer"
-          period="March 2026 - Present"
-          website="https://www.synopsys.com/"
-          logo={`${BASE_PATH}/synopsys.jpg`}
+          company="IronOne Technologies LLC"
+          role="Trainee Machine Learning Engineer"
+          period="July 2024 - January 2025"
+          website="https://irononeailabs.com"
+          logo={`${BASE_PATH}/ironone.jpg`}
           highlights={[
-            "Contributing to a agentic ai system for automating hardware synthesis debug and verification",
+            "Enhanced model explainability using SHAP to improve stakeholder trust and regulatory compliance",
+            "Specialized in handling imbalanced datasets through advanced experimentation",
+            "Designed custom loss functions to boost model performance on minority classes",
+            "Improved recall for delinquent customers from 0.39 to 0.47, while maintaining recall of non-delinquent customers at 0.98",
           ]}
         />
       </div>
